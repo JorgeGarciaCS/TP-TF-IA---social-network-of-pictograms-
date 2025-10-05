@@ -1,0 +1,42 @@
+{
+  "name": "pictoamigos",
+  "version": "1.0.0",
+  "description": "Red social de pictogramas para niños - Interfaz amigable con chat y elementos visuales interactivos",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx http-server . -p 3000 -o",
+    "dev": "npx live-server --port=3000 --open=/index.html",
+    "build": "echo 'Proyecto listo para producción'",
+    "deploy": "echo 'Configurar despliegue según plataforma'"
+  },
+  "keywords": [
+    "red-social",
+    "pictogramas",
+    "niños",
+    "chat",
+    "frontend",
+    "javascript",
+    "css",
+    "html"
+  ],
+  "author": "Tu Nombre",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JorgeGarciaCS/TP-TF-IA---social-network-of-pictograms-.git"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1",
+    "live-server": "^1.2.2"
+  },
+  "dependencies": {},
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead",
+    "not ie 11"
+  ]
+}

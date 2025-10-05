@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PictoAmigos - Red Social de Pictogramas</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One:wght@400&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container" id="app">
+        <!-- Pantalla de Bienvenida -->
+        <div class="welcome-screen active" id="welcomeScreen">
+            <div class="welcome-content">
+                <div class="logo-container">
+                    <div class="logo-circle">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h1 class="app-title">PictoAmigos</h1>
+                    <p class="app-subtitle">¡Tu red social de pictogramas favorita!</p>
+                </div>
+                
+                <div class="floating-icons">
+                    <div class="floating-icon" style="--delay: 0s">🌟</div>
+                    <div class="floating-icon" style="--delay: 1s">🎨</div>
+                    <div class="floating-icon" style="--delay: 2s">🦄</div>
+                    <div class="floating-icon" style="--delay: 3s">🌈</div>
+                    <div class="floating-icon" style="--delay: 4s">🎈</div>
+                </div>
+
+                <div class="welcome-buttons">
+                    <button class="btn btn-primary" onclick="showScreen('loginScreen')">
+                        <i class="fas fa-sign-in-alt"></i>
+                        Iniciar Sesión
+                    </button>
+                    <button class="btn btn-secondary" onclick="showScreen('registerScreen')">
+                        <i class="fas fa-user-plus"></i>
+                        Crear Cuenta
+                    </button>
+                    <!-- Botón temporal para pruebas -->
+                    <button class="btn" onclick="testDirectAccess()" style="background: #FFE66D; color: #333; margin-top: 10px;">
+                        <i class="fas fa-cog"></i>
+                        Acceso Directo (Prueba)
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pantalla de Registro -->
+        <div class="screen" id="registerScreen">
+            <div class="form-container">
+                <button class="back-btn" onclick="showScreen('welcomeScreen')">
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+                
+                <div class="form-header">
+                    <div class="form-icon">
+                        <i class="fas fa-user-plus"></i>
+                    </div>
+                    <h2>¡Únete a PictoAmigos!</h2>
+                    <p>Crea tu cuenta para empezar a divertirte</p>
+                </div>
+
+                <form class="register-form" id="registerForm">
+                    <div class="input-group">
+                        <label for="username">
+                            <i class="fas fa-user"></i>
+                            Nombre de usuario
+                        </label>
+                        <input type="text" id="username" name="username" placeholder="Escribe tu nombre de usuario" required>
+                        <div class="input-border"></div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="email">
+                            <i class="fas fa-envelope"></i>
+                            Correo electrónico
+                        </label>
+                        <input type="email" id="email" name="email" placeholder="tu@email.com" required>
+                        <div class="input-border"></div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="password">
+                            <i class="fas fa-lock"></i>
+                            Contraseña
+                        </label>
+                        <input type="password" id="password" name="password" placeholder="Crea una contraseña segura" required>
+                        <div class="input-border"></div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="age">
+                            <i class="fas fa-birthday-cake"></i>
+                            Edad
+                        </label>
+                        <select id="age" name="age" required>
+                            <option value="">Selecciona tu edad</option>
+                            <option value="6">6 años</option>
+                            <option value="7">7 años</option>
+                            <option value="8">8 años</option>
+                            <option value="9">9 años</option>
+                            <option value="10">10 años</option>
+                            <option value="11">11 años</option>
+                            <option value="12">12 años</option>
+                        </select>
+                        <div class="input-border"></div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-full">
+                        <i class="fas fa-rocket"></i>
+                        ¡Crear mi cuenta!
+                    </button>
+                </form>
+
+                <div class="form-footer">
+                    <p>¿Ya tienes cuenta? <a href="#" onclick="showScreen('loginScreen')">Inicia sesión aquí</a></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pantalla de Login -->
+        <div class="screen" id="loginScreen">
+            <div class="form-container">
+                <button class="back-btn" onclick="showScreen('welcomeScreen')">
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+                
+                <div class="form-header">
+                    <div class="form-icon">
+                        <i class="fas fa-sign-in-alt"></i>
+                    </div>
+                    <h2>¡Bienvenido de vuelta!</h2>
+                    <p>Inicia sesión para continuar la diversión</p>
+                </div>
+
+                <form class="login-form" id="loginForm">
+                    <div class="input-group">
+                        <label for="loginEmail">
+                            <i class="fas fa-envelope"></i>
+                            Correo electrónico
+                        </label>
+                        <input type="email" id="loginEmail" name="email" placeholder="tu@email.com" required>
+                        <div class="input-border"></div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="loginPassword">
+                            <i class="fas fa-lock"></i>
+                            Contraseña
+                        </label>
+                        <input type="password" id="loginPassword" name="password" placeholder="Tu contraseña" required>
+                        <div class="input-border"></div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-full">
+                        <i class="fas fa-sign-in-alt"></i>
+                        ¡Entrar!
+                    </button>
+                </form>
+
+                <div class="form-footer">
+                    <p>¿No tienes cuenta? <a href="#" onclick="showScreen('registerScreen')">Créala aquí</a></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pantalla Principal (Chat) -->
+        <div class="screen" id="mainScreen">
+            <div class="main-layout">
+                <!-- Header -->
+                <header class="main-header">
+                    <div class="header-left">
+                        <div class="user-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="user-info">
+                            <h3 id="userNameDisplay">¡Hola, Amiguito!</h3>
+                            <span class="status online">En línea</span>
+                        </div>
+                    </div>
+                    <div class="header-center">
+                        <h1>PictoAmigos</h1>
+                    </div>
+                    <div class="header-right">
+                        <button class="btn-icon" onclick="showNotifications()">
+                            <i class="fas fa-bell"></i>
+                            <span class="notification-dot"></span>
+                        </button>
+                        <button class="btn-icon" onclick="logout()">
+                            <i class="fas fa-sign-out-alt"></i>
+                        </button>
+                    </div>
+                </header>
+
+                <!-- Chat Area -->
+                <div class="chat-container">
+                    <div class="friends-list">
+                        <h3>
+                            <i class="fas fa-users"></i>
+                            Mis Amigos
+                        </h3>
+                        <div class="friends-list-content" id="friendsList">
+                            <div class="friend-item active" onclick="selectFriend('Ana')">
+                                <div class="friend-avatar">🌸</div>
+                                <div class="friend-info">
+                                    <h4>Ana</h4>
+                                    <p>¡Hola! ¿Cómo estás?</p>
+                                </div>
+                                <div class="friend-status online"></div>
+                            </div>
+                            <div class="friend-item" onclick="selectFriend('Carlos')">
+                                <div class="friend-avatar">🚀</div>
+                                <div class="friend-info">
+                                    <h4>Carlos</h4>
+                                    <p>¿Jugamos?</p>
+                                </div>
+                                <div class="friend-status online"></div>
+                            </div>
+                            <div class="friend-item" onclick="selectFriend('María')">
+                                <div class="friend-avatar">🦄</div>
+                                <div class="friend-info">
+                                    <h4>María</h4>
+                                    <p>Mira este pictograma...</p>
+                                </div>
+                                <div class="friend-status offline"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chat-area">
+                        <div class="chat-header">
+                            <div class="chat-friend-info">
+                                <div class="chat-friend-avatar">🌸</div>
+                                <div>
+                                    <h3 id="chatFriendName">Ana</h3>
+                                    <span class="chat-friend-status">En línea</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="chat-messages" id="chatMessages">
+                            <div class="message received">
+                                <div class="message-avatar">🌸</div>
+                                <div class="message-content">
+                                    <p>¡Hola! ¿Cómo estás?</p>
+                                    <span class="message-time">10:30 AM</span>
+                                </div>
+                            </div>
+                            <div class="message sent">
+                                <div class="message-content">
+                                    <p>¡Muy bien! ¿Y tú?</p>
+                                    <span class="message-time">10:32 AM</span>
+                                </div>
+                            </div>
+                            <div class="message received">
+                                <div class="message-avatar">🌸</div>
+                                <div class="message-content">
+                                    <div class="pictogram-message">🎈🎉🎂</div>
+                                    <p>¡Es mi cumpleaños!</p>
+                                    <span class="message-time">10:35 AM</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="chat-input-area">
+                            <div class="pictogram-selector">
+                                <button class="pictogram-btn" onclick="addPictogram('😊')">😊</button>
+                                <button class="pictogram-btn" onclick="addPictogram('❤️')">❤️</button>
+                                <button class="pictogram-btn" onclick="addPictogram('🎉')">🎉</button>
+                                <button class="pictogram-btn" onclick="addPictogram('🌈')">🌈</button>
+                                <button class="pictogram-btn" onclick="addPictogram('🦄')">🦄</button>
+                                <button class="pictogram-btn" onclick="addPictogram('🎈')">🎈</button>
+                                <button class="pictogram-btn" onclick="addPictogram('⭐')">⭐</button>
+                                <button class="pictogram-btn" onclick="addPictogram('🎨')">🎨</button>
+                                <button class="real-pictogram-btn" onclick="openPictogramSelector()" title="Buscar pictogramas reales de ARASAAC">
+                                    <i class="fas fa-images"></i>
+                                    <span class="new-indicator">N</span>
+                                </button>
+                            </div>
+                            <div class="message-input-container">
+                                <input type="text" id="messageInput" placeholder="Escribe tu mensaje..." class="message-input">
+                                <button class="send-btn" onclick="sendMessage()">
+                                    <i class="fas fa-paper-plane"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/extensions.js"></script>
+    <script src="js/pictogram-api.js"></script>
+</body>
+</html>
